@@ -18,7 +18,7 @@ function Intro() {
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       <p className="text-3xl font-semibold leading-tight text-white md:text-[2.6rem]">
-        I turn large language models into <span className="text-gradient">production systems</span> people actually use.
+        I turn agentic AI ideas into <span className="text-gradient">production systems</span> that people actually use.
       </p>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-fog">
         Generative AI Engineer with 2+ years shipping GenAI, deep learning and NLP on Azure and AWS, from retrieval

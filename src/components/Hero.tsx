@@ -98,7 +98,7 @@ export function Hero() {
             transition={{ delay: 0.55, duration: 0.8 }}
             className="mt-6 max-w-xl text-base text-fog md:text-lg"
           >
-            I build production LLM systems: multimodal RAG, autonomous agents wired with MCP, and fine-tuned models that ship to real users.
+            I build production-grade agentic AI systems: multimodal RAG, autonomous agents powered by custom MCP servers, and fine-tuned models that ship to real users.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65, duration: 0.8 }} className="mt-10 flex flex-wrap items-center gap-4">
