@@ -1,31 +1,38 @@
-import { motion, useScroll, useTransform } from 'motion/react'
-import { useRef } from 'react'
-import { profile, stats } from '../data'
+import { motion } from 'motion/react'
+import { stats } from '../data'
 import { Counter, SectionHeading, TiltCard } from './ui'
 
-const words = profile.summary.split(' ')
+const shipped = [
+  { k: 'Multimodal RAG', v: '90,000+ pages / day' },
+  { k: 'Agentic travel product', v: 'live with real users' },
+  { k: 'QLoRA medical LLM', v: '78% → 91% accuracy' },
+  { k: 'Computer vision', v: 'deployed in the field' },
+]
 
-function RevealParagraph() {
-  const ref = useRef<HTMLParagraphElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 85%', 'end 45%'] })
+function Intro() {
   return (
-    <p ref={ref} className="flex flex-wrap text-2xl font-medium leading-snug md:text-[2rem]">
-      {words.map((w, i) => (
-        <Word key={i} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]}>
-          {w}
-        </Word>
-      ))}
-    </p>
-  )
-}
-
-function Word({ children, progress, range }: { children: string; progress: ReturnType<typeof useScroll>['scrollYProgress']; range: [number, number] }) {
-  const opacity = useTransform(progress, range, [0.12, 1])
-  const highlight = /\d|RAG|agentic|LLM|QLoRA|computer-vision/i.test(children)
-  return (
-    <motion.span style={{ opacity }} className={`mr-[0.28em] ${highlight ? 'text-cyan' : 'text-white'}`}>
-      {children}
-    </motion.span>
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-15%' }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+    >
+      <p className="text-3xl font-semibold leading-tight text-white md:text-[2.6rem]">
+        I turn large language models into <span className="text-gradient">production systems</span> people actually use.
+      </p>
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-fog">
+        Generative AI Engineer with 2+ years shipping GenAI, deep learning and NLP on Azure and AWS, from retrieval
+        pipelines and autonomous agents to fine-tuned models and rigorous evaluation.
+      </p>
+      <ul className="mt-10 grid gap-x-10 gap-y-5 border-t border-white/10 pt-8 sm:grid-cols-2">
+        {shipped.map((s) => (
+          <li key={s.k} className="border-l-2 border-cyan/60 pl-4">
+            <div className="font-medium text-white">{s.k}</div>
+            <div className="mt-0.5 font-mono text-sm text-fog">{s.v}</div>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
   )
 }
 
@@ -43,7 +50,7 @@ export function About() {
     <section id="about" className="relative mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
       <SectionHeading kicker="01 / About" title="Engineering Intelligence" />
       <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr]">
-        <RevealParagraph />
+        <Intro />
         <TiltCard glow="#a78bfa" max={8}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
