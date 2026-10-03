@@ -37,21 +37,22 @@ export const projects: Project[] = [
   {
     id: 'rag',
     index: '01',
-    title: 'Multimodal RAG for Engineering Drawings',
+    title: 'Multimodal RAG for Industrial Drawings',
     tagline: 'Ask in plain language. Land on the exact page of the exact revision.',
     status: 'Production',
     accent: '#22d3ee',
     bullets: [
       'Production RAG system that lets engineers search thousands of technical drawings and machine/floor diagrams, across revisions, in plain language and jump straight to the matching page.',
       'Custom YOLOv9 model detects engineering symbols; combined with Azure Document Intelligence and LLM-based cleanup to extract structured data from every page.',
+      'Hybrid search (BM25 keyword + dense vector) with a cross-encoder reranker, so exact part numbers and natural-language questions both land on the right page.',
       'Scaled the pipeline to 90,000+ pages per day while keeping retrieval latency low.',
     ],
     metrics: [
       { value: '90K+', label: 'pages / day' },
       { value: 'YOLOv9', label: 'symbol detection' },
-      { value: 'Rev', label: 'revision-aware search' },
+      { value: 'Hybrid', label: 'search + reranker' },
     ],
-    tech: ['YOLOv9', 'Azure Document Intelligence', 'Azure AI Search', 'Azure OpenAI', 'FastAPI', 'Vector Search'],
+    tech: ['YOLOv9', 'Azure Document Intelligence', 'Azure AI Search', 'Hybrid Search', 'Reranker', 'Azure OpenAI', 'FastAPI'],
   },
   {
     id: 'agent',

@@ -46,7 +46,7 @@ export function RagVisual({ active }: { active: boolean }) {
           transition={{ duration: 4, repeat: Infinity, delay: i * 0.8, ease: 'linear' }}
         />
       ))}
-      <text x="12" y="266" fill={C} fillOpacity="0.6" fontSize="8" fontFamily="JetBrains Mono">INGEST ▸ 90,000+ pages/day</text>
+      <text x="12" y="266" fill={C} fillOpacity="0.6" fontSize="8" fontFamily="JetBrains Mono">INGEST ▸ 90,000+ pages/day · HYBRID SEARCH ▸ RERANK</text>
 
       {/* Drawing sheet */}
       <motion.rect
